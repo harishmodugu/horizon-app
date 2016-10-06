@@ -3,3 +3,4 @@ rethinkdb_data
 .hz/secrets.toml
 *.tmp
 *.swp
+node_modules/
