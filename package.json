@@ -4,10 +4,13 @@
   "description": "A simple horizon app using rethink-db and angular 1.4",
   "main": "index.js",
   "dependencies": {
-    "bootstrap": "^3.3.7"
+    "@horizon/client": "^2.0.0",
+    "bootstrap": "^3.3.7",
+    "horizon": "^2.0.0"
   },
   "devDependencies": {
-    "angular": "^1.4.3"
+    "angular": "^1.4.3",
+    "webpack-dev-server": "^1.16.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

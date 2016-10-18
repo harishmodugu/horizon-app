@@ -1,17 +1,16 @@
 <!doctype html>
-<html>
+<html ng-app='horizonApp'>
   <head>
     <meta charset="UTF-8">
-    <script src="/horizon/horizon.js"></script>
-    <script>
-      var horizon = Horizon();
-      horizon.onReady(function() {
-        document.querySelector('h1').innerHTML = 'horizon_app works!'
-      });
-      horizon.connect();
-    </script>
+    <script src="bundle.js"></script>
   </head>
-  <body>
-   <marquee direction="left"><h1></h1></marquee>
+  <body ng-controller = 'HomeController' ng-init="hzConnect()">
+    <h1>Names</h1>
+    <div>
+      <p ng-repeat='n in names'>
+        <span>{{n.name}}</span>
+        <br/>
+      </p>
+    </div>
   </body>
 </html>
