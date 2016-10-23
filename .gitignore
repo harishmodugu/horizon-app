@@ -3,6 +3,7 @@ rethinkdb_data
 .hz/secrets.toml
 *.tmp
 *.swp
+*.swo
 node_modules/
 .DS_Store
 dist/bundle.js
