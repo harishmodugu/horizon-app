@@ -1,15 +1,29 @@
+var webpack = require('webpack');
+var path = require('path');
 module.exports = {
   entry: "./src/entry.js",
   output: {
-    path: "dist",
-    publicPath: "dist",
+    path: path.resolve("dist"),
+    publicPath: "/public",
     filename: "bundle.js"
   },
+  watch:true,
+  resolve: ['', 'js','css','scss'],
   module : {
     loaders: [
-      { test: /\.css$/, loader: "style!css" }
+      { test: /\.css$/, loader: "style-loader!css-loader" },
+      { test: /\.scss$/, loaders: ['style', 'css', 'postcss', 'sass']},
+      { test: /\.(woff2?|ttf|eot|svg)$/, loader: 'url?limit=10000'},
+      { test: /bootstrap\/dist\/js\/umd\//, loader: 'imports?jQuery=jquery'}
     ]
   },
+  plugins: [
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery",
+      jquery: "jquery"
+    })
+  ],
   devServer: {
     proxy: {
       '*': {
@@ -19,5 +33,5 @@ module.exports = {
     inline: true,
     hot: true,
     contentBase: "dist"
-  },
+  }
 };
