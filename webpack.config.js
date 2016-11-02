@@ -1,10 +1,11 @@
 var webpack = require('webpack');
 var path = require('path');
 module.exports = {
+  context: path.resolve('scripts'),
   entry: "./src/entry.js",
   output: {
-    path: path.resolve("dist"),
-    publicPath: "/public",
+    path: path.resolve("build/scripts/"),
+    publicPath: "/public/scripts",
     filename: "bundle.js"
   },
   watch:true,

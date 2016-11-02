@@ -8,18 +8,27 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">Experiments Tool</a>
+          <a class="navbar-brand" href="#/">Experiments Tool</a>
+        </div>
+        <div id='navbar'>
+          <ul class='nav navbar-nav'>
+            <li class='active'>
+              <a href='#persons'>Manage Persons</a>
+            </li>
+            <li>
+              <a href='#teams'>Manage Teams</a>
+            </li>
+          </ul>
         </div>
       </div>
     </nav>
 
     <div class="container main-content">
-      <div>
-        <p ng-repeat='n in names'>
-          <span>{{n.name}}</span>
-          <br/>
-        </p>
-      </div>
+      <!--<div>-->
+        <!--<h1>Search Criteria here</h1>-->
+        <!--<h1> Results here</h1>-->
+      <!--</div>-->
+      <div ng-view=""></div>
     </div>
   </body>
 </html>
