@@ -3,16 +3,16 @@ var horizonApp = angular.module('horizonApp',['hzRepo', 'ngRoute']);
 horizonApp.config(function($routeProvider) {
   $routeProvider
   .when("/", {
-    templateUrl: "templates/search.htm",
-    controller: "SearchController"
+    templateUrl: "./views/search.htm"
+    //,controller: "SearchController"
   })
   .when("/persons", {
-    templateUrl: "templates/persons.htm",
-    controller: "PersonsController"
+    templateUrl: "./views/persons.htm"
+    //controller: "PersonsController"
   })
   .when("/teams", {
-    templateUrl: "templates/teams.htm",
-    controller: "TeamsController"
+    templateUrl: "./views/teams.htm"
+    //controller: "TeamsController"
   })
 });
 

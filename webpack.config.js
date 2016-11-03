@@ -1,11 +1,11 @@
 var webpack = require('webpack');
 var path = require('path');
 module.exports = {
-  context: path.resolve('scripts'),
-  entry: "./src/entry.js",
+  context: path.resolve('src/scripts'),
+  entry: "./entry.js",
   output: {
-    path: path.resolve("build/scripts/"),
-    publicPath: "/public/scripts",
+    path: path.resolve("dist/scripts/"),
+    publicPath: "/public/scripts/",
     filename: "bundle.js"
   },
   watch:true,
@@ -16,6 +16,7 @@ module.exports = {
       { test: /\.scss$/, loaders: ['style', 'css', 'postcss', 'sass']},
       { test: /\.(woff2?|ttf|eot|svg)$/, loader: 'url?limit=10000'},
       { test: /bootstrap\/dist\/js\/umd\//, loader: 'imports?jQuery=jquery'}
+     // { test: /\.htm$/, loader: 'file'}
     ]
   },
   plugins: [
@@ -26,13 +27,8 @@ module.exports = {
     })
   ],
   devServer: {
-    proxy: {
-      '*': {
-        target: 'http://localhost:8181'
-      }
-    },
     inline: true,
     hot: true,
-    contentBase: "dist"
+    contentBase: "public"
   }
 };
