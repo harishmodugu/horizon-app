@@ -4,11 +4,4 @@ rethinkdb_data
 *.tmp
 *.swp
 *.swo
-node_modules/
 .DS_Store
-dist/bundle.js
-dist/*.woff2
-dist/*.woff
-dist/*.ttf
-dist/*.eot
-dist/*.svg

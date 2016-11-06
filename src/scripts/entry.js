@@ -1,5 +1,9 @@
 var angular = require('angular');
 require('angular-route');
+require('./controllers/home-controller');
+require('./controllers/persons-controller');
+require('./controllers/search-controller');
+require('./controllers/teams-controller');
 require('./app');
 require('./repository');
 require('./hz-service');

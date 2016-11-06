@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <script src="/public/scripts/bundle.js"></script>
   </head>
-  <body ng-controller = 'HomeController' ng-init="hzConnect()">
+  <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -24,11 +24,7 @@
     </nav>
 
     <div class="container main-content">
-      <!--<div>-->
-        <!--<h1>Search Criteria here</h1>-->
-        <!--<h1> Results here</h1>-->
-      <!--</div>-->
-      <div ng-view=""></div>
+      <ng-view></ng-view>
     </div>
   </body>
 </html>

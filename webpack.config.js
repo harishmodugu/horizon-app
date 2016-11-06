@@ -1,10 +1,12 @@
 var webpack = require('webpack');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 var path = require('path');
+
 module.exports = {
   context: path.resolve('src/scripts'),
   entry: "./entry.js",
   output: {
-    path: path.resolve("dist/scripts/"),
+    path: path.resolve("dist/public/scripts/"),
     publicPath: "/public/scripts/",
     filename: "bundle.js"
   },
@@ -24,11 +26,15 @@ module.exports = {
       $: "jquery",
       jQuery: "jquery",
       jquery: "jquery"
-    })
+    }),
+    new CopyWebpackPlugin([
+      { from: path.resolve('public/index.html'), to: path.resolve('dist/index.html') }
+    ])
   ],
   devServer: {
     inline: true,
     hot: true,
-    contentBase: "public"
+    contentBase: "public",
+    outputPath: "dist"
   }
 };
