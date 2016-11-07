@@ -1,4 +1,4 @@
-var module = angular.module('horizonApp', ['hzRepo']);
+var module = angular.module('horizonApp');
 
 module.controller('PersonController', function($repo,$scope) {
   $scope.firstName = '';

@@ -1,4 +1,4 @@
-var horizonApp = angular.module('horizonApp',['ngRoute']);
+var horizonApp = angular.module('horizonApp',['ngRoute','hzRepo']);
 
 horizonApp.config(function($routeProvider) {
   $routeProvider
