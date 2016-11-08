@@ -1,10 +1,10 @@
 var angular = require('angular');
 require('angular-route');
 require('./hz-service');
-require('./repository');
+require('./services/persons-repo');
 require('./app');
 require('./controllers/home-controller');
-require('./controllers/persons-controller');
+require('./controllers/experiments-controller');
 require('./controllers/search-controller');
 require('./controllers/teams-controller');
 require('bootstrap-loader');

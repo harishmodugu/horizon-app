@@ -1,3 +1,48 @@
-<div class="teams-container">
-  <h1> Teams here </h1>
+<div class="persons-container" ng-controller='TeamsController' ng-init='hzConnect()'>
+  <h1> Add a member </h1>
+
+  <div class="add-person">
+    <form class="form-horizontal">
+      <div class='form-group'>
+        <label for='firstName' class='col-sm-2 control-label'>First Name</label>
+        <div class='col-sm-3'>
+          <input type='text' class='form-control' id='firstName' ng-model='firstName' placeholder='First Name'/>
+        </div>
+      </div>
+      <div class='form-group'>
+        <label for='LastName' class='col-sm-2 control-label'>Last Name</label>
+        <div class='col-sm-3'>
+          <input type='text' class='form-control' id='lastName' ng-model='lastName' placeholder='Last Name'/>
+        </div>
+      </div>
+      <div class='form-group'>
+        <label for='Email' class='col-sm-2 control-label'>Email</label>
+        <div class='col-sm-3'>
+          <input type='text' class='form-control' id='email' placeholder='Email' ng-model='email'/>
+        </div>
+      </div>
+      <div class='form-group'>
+        <label for='isTeamLead' class='col-sm-2 control-label'>Is Team Lead ?</label>
+        <div class='col-sm-3'>
+            <input type='checkbox' id='isTeamLead' ng-model='isTeamLead'/>
+        </div>
+      </div>
+      <div class='form-group'>
+        <div class='col-sm-3 col-sm-offset-2'>
+          <button class='btn btn-primary' ng-click='addPerson()'>Add Member</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="persons-container">
+    <h1> Persons </h1>
+    <ul class='persons-list'>
+      <li ng-repeat='person in allPersons'>
+      <span>{{person.firstName}} {{person.lastName}}</span>
+      <a ng-click='deletePerson(person.id,$index)'>X</a>
+      </li>
+    </ul>
+  </div>
+
 </div>

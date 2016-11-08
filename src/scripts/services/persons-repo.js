@@ -1,25 +1,26 @@
 var repoModule = angular.module('hzRepo', []);
-var horizon = require('./hz-service');
+var horizon = require('../hz-service');
 
 repoModule.service('$repo', function() {
   var persons = horizon("persons");
 
   return {
-    getPersons: function(callback) {
+    loadPersons: function(callback) {
       persons.fetch().subscribe(callback,
       function(err){
         console.log(err);
       });
     },
-    searchItems: function() {
+    searchItems: function(filter) {
       console.log('searching');
     },
     addPerson: function(person) {
-      console.log('adding person');
+      if(!person) return;
       persons.store(person);
     },
-    deleteItem: function() {
-      console.log('deleting');
+    deletePerson: function(id) {
+      //console.log('deleting id', id);
+      persons.remove(id);
     },
     editItem: function() {
       console.log('editing');
