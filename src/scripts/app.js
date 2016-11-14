@@ -6,10 +6,6 @@ horizonApp.config(function($routeProvider) {
       templateUrl: require("./views/home.htm")
       ,controller: "HomeController"
     })
-    //.when("/persons", {
-      //templateUrl: require("./views/persons.htm")
-      //,controller: "PersonController"
-    //})
     .when("/teams", {
       templateUrl: require("./views/teams.htm")
       ,controller: "TeamsController"

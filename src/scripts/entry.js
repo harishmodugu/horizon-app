@@ -1,4 +1,5 @@
 var angular = require('angular');
+var _ = require("lodash");
 require('angular-route');
 require('./hz-service');
 require('./services/persons-repo');

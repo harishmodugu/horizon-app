@@ -1,7 +1,7 @@
 var repoModule = angular.module('hzRepo', []);
 var horizon = require('../hz-service');
 
-repoModule.service('$repo', function() {
+repoModule.service('$repo', function($rootScope) {
   var persons = horizon("persons");
 
   return {
@@ -17,6 +17,7 @@ repoModule.service('$repo', function() {
     addPerson: function(person) {
       if(!person) return;
       persons.store(person);
+      $rootScope.$emit('PERSON_ADDED');
     },
     deletePerson: function(id) {
       //console.log('deleting id', id);

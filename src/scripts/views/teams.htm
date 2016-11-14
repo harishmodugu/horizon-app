@@ -10,13 +10,13 @@
         </div>
       </div>
       <div class='form-group'>
-        <label for='LastName' class='col-sm-2 control-label'>Last Name</label>
+        <label for='lastName' class='col-sm-2 control-label'>Last Name</label>
         <div class='col-sm-3'>
           <input type='text' class='form-control' id='lastName' ng-model='lastName' placeholder='Last Name'/>
         </div>
       </div>
       <div class='form-group'>
-        <label for='Email' class='col-sm-2 control-label'>Email</label>
+        <label for='email' class='col-sm-2 control-label'>Email</label>
         <div class='col-sm-3'>
           <input type='text' class='form-control' id='email' placeholder='Email' ng-model='email'/>
         </div>
@@ -25,6 +25,15 @@
         <label for='isTeamLead' class='col-sm-2 control-label'>Is Team Lead ?</label>
         <div class='col-sm-3'>
             <input type='checkbox' id='isTeamLead' ng-model='isTeamLead'/>
+        </div>
+      </div>
+      <div class='form-group' ng-hide='isTeamLead===true'>
+        <label for='teamLead' class='col-sm-2 control-label'>Team Lead</label>
+        <div class='col-sm-3'>
+            <select type='text' id='teamLead' ng-model='teamLead'>
+              <option value=''>---Select---</option>
+              <option ng-repeat='option in teamLeads' value='{{option.id}}'>{{option.firstName}} {{option.lastName}}</option>
+            </select>
         </div>
       </div>
       <div class='form-group'>
@@ -37,6 +46,7 @@
 
   <div class="persons-container">
     <h1> Persons </h1>
+    <h4 ng-show='allPersons.length === 0'>None Added</h4>
     <ul class='persons-list'>
       <li ng-repeat='person in allPersons'>
       <span>{{person.firstName}} {{person.lastName}}</span>
