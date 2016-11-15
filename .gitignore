@@ -4,4 +4,5 @@ rethinkdb_data
 *.tmp
 *.swp
 *.swo
+*.swn
 .DS_Store

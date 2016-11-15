@@ -1,17 +1,17 @@
 var horizonApp = angular.module('horizonApp');
 
-horizonApp.controller('HomeController', function($scope, $repo) {
+horizonApp.controller('HomeController', function($scope, $personsRepo) {
   $scope.allPersons = [];
   var loadPersons = function() {
     var setPersons = function(items) {
       $scope.allPersons = items;
       $scope.$apply();
     };
-    $repo.loadPersons(setPersons);
+    $personsRepo.loadPersons(setPersons);
   };
 
   $scope.hzConnect = function() {
-   $repo.connect(function() {
+   $personsRepo.connect(function() {
     //console.log('Database Connected!')
     loadPersons();
    });
@@ -19,7 +19,7 @@ horizonApp.controller('HomeController', function($scope, $repo) {
 
   $scope.deletePerson = function(id, index) {
     $scope.allPersons.splice(index,1);
-    $repo.deletePerson(id);
+    $personsRepo.deletePerson(id);
   }
 });
 

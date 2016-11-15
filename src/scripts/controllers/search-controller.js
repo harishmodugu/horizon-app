@@ -1,5 +1,5 @@
 
 var horizonApp = angular.module('horizonApp');
 
-horizonApp.controller('SearchController', function($scope, $repo) {
+horizonApp.controller('SearchController', function($scope, $personsRepo) {
 });

@@ -18,7 +18,7 @@
       <div class='form-group'>
         <label for='email' class='col-sm-2 control-label'>Email</label>
         <div class='col-sm-3'>
-          <input type='text' class='form-control' id='email' placeholder='Email' ng-model='email'/>
+          <input type='email' class='form-control' id='email' placeholder='test@gmail.com' ng-model='email'/>
         </div>
       </div>
       <div class='form-group'>
@@ -30,7 +30,7 @@
       <div class='form-group' ng-hide='isTeamLead===true'>
         <label for='teamLead' class='col-sm-2 control-label'>Team Lead</label>
         <div class='col-sm-3'>
-            <select type='text' id='teamLead' ng-model='teamLead'>
+            <select type='text' id='teamLead' ng-model='teamLeadId'>
               <option value=''>---Select---</option>
               <option ng-repeat='option in teamLeads' value='{{option.id}}'>{{option.firstName}} {{option.lastName}}</option>
             </select>
@@ -47,12 +47,25 @@
   <div class="persons-container">
     <h1> Persons </h1>
     <h4 ng-show='allPersons.length === 0'>None Added</h4>
-    <ul class='persons-list'>
-      <li ng-repeat='person in allPersons'>
-      <span>{{person.firstName}} {{person.lastName}}</span>
-      <a ng-click='deletePerson(person.id,$index)'>X</a>
-      </li>
-    </ul>
+    <table class='table table-striped' ng-show='allPersons.length > 0'>
+      <thead>
+        <tr>
+          <th>Full Name</th>
+          <th>Email</th>
+          <th>Team Lead</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat='person in allPersons'>
+          <td>{{person.firstName}} {{person.lastName}}</td>
+          <td>{{person.email}}</td>
+          <td>{{person.isTeamLead? 'NA': person.teamLead.firstName + ' ' + person.teamLead.lastName}}</td>
+          <td><button class='btn btn-link' ng-click='deletePerson(person.id, $index)'>Delete</button></td>
+        </tr>
+      </tbody>
+
+    </table>
   </div>
 
 </div>

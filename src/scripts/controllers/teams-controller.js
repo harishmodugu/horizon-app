@@ -1,26 +1,48 @@
 var module = angular.module('horizonApp');
 
-module.controller('TeamsController', function($repo,$scope,$rootScope) {
+module.controller('TeamsController', function($personsRepo, $scope, $rootScope) {
   $scope.firstName = '';
   $scope.lastName = '';
   $scope.email = '';
   $scope.isTeamLead = false;
-  $scope.teamLead = '';
+  $scope.teamLeadId = '';
   $scope.allPersons = [];
   $scope.teamLeads = [];
 
   $scope.addPerson = function() {
+    var lead = $scope.isTeamLead? 'None' :_.find($scope.allPersons, function(p) {
+      return p.id === $scope.teamLeadId;
+    });
+
     var person = {
       firstName: $scope.firstName,
       lastName: $scope.lastName,
       email: $scope.email,
       isTeamLead: $scope.isTeamLead,
-      teamLead: $scope.teamLead
+      teamLead: lead
     };
-    $repo.addPerson(person);
+
+    $personsRepo.addPerson(person);
   }
 
   $rootScope.$on('PERSON_ADDED', function(){
+    loadPersons();
+    clearFields();
+  });
+
+  var clearFields = function() {
+    $scope.firstName = '';
+    $scope.lastName = '';
+    $scope.email = '';
+    $scope.isTeamLead = false;
+    $scope.teamLeadId = '';
+  };
+
+  $rootScope.$on('PERSON_DELETED', function(id){
+    //$scope.teamLeads = _.remove($scope.teamLeads, function(lead) {
+      //return lead.id === id;
+    //});
+    //TODO: Remove instead
     loadPersons();
   });
 
@@ -30,7 +52,7 @@ module.controller('TeamsController', function($repo,$scope,$rootScope) {
       loadTeamLeads();
       $scope.$apply();
     };
-    $repo.loadPersons(setPersons);
+    $personsRepo.loadPersons(setPersons);
   };
 
   var loadTeamLeads = function() {
@@ -42,7 +64,7 @@ module.controller('TeamsController', function($repo,$scope,$rootScope) {
   }
 
   $scope.hzConnect = function() {
-   $repo.connect(function() {
+   $personsRepo.connect(function() {
     //console.log('Database Connected!')
     loadPersons();
    });
@@ -50,7 +72,7 @@ module.controller('TeamsController', function($repo,$scope,$rootScope) {
 
   $scope.deletePerson = function(id, index) {
     $scope.allPersons.splice(index,1);
-    $repo.deletePerson(id);
+    $personsRepo.deletePerson(id);
   }
 
 });
