@@ -1,4 +1,4 @@
-var repoModule = angular.module('hzRepo', []);
+var repoModule = angular.module('expRepoModule', []);
 var horizon = require('../hz-service');
 
 repoModule.service('$experimentsRepo', function($rootScope) {
