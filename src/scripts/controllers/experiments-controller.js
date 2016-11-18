@@ -2,9 +2,14 @@ var horizonApp = angular.module('horizonApp');
 
 horizonApp.controller('ExperimentsController',
     function($experimentsRepo, $personsRepo, $scope, $rootScope) {
+
+  var getDate = function() {
+    var date = new Date();
+    return (date.getMonth() + 1) + '/' + date.getDate() + '/' +  date.getFullYear();
+  }
+
   $scope.experimentName = '';
-  var date = new Date();
-  $scope.datePerformed = (date.getMonth() + 1) + '/' + date.getDate() + '/' +  date.getFullYear();
+  $scope.datePerformed = getDate();
   $scope.personId='';
   $scope.results = '';
   $scope.cost = 0;
@@ -12,7 +17,6 @@ horizonApp.controller('ExperimentsController',
   $scope.reason = '';
   $scope.allExperiments = [];
   $scope.allPersons = [];
-
 
   $scope.addExperiment = function() {
     var performedBy = _.find($scope.allPersons, function(p) {
@@ -34,12 +38,12 @@ horizonApp.controller('ExperimentsController',
 
   $rootScope.$on('EXPERIMENT_ADDED', function(){
     loadExperiments();
-    clearFields();
+    resetFields();
   });
 
-  var clearFields = function() {
+  var resetFields = function() {
     $scope.experimentName = '';
-    $scope.datePerformed = '';
+    $scope.datePerformed = getDate();
     $scope.personId='';
     $scope.results = '';
     $scope.cost = 0;

@@ -1,5 +1,48 @@
-<div ng-controller='HomeController'>
+<div class='home-container' ng-controller='HomeController' ng-init='hzConnect()'>
   <div class="search-container">
-    <h1> Search here </h1>
+    <h1> Search Experiments </h1>
+    <form class="form-horizontal">
+      <div class='form-group'>
+        <div class='col-sm-5'>
+          <input type='text' class='form-control' id='search' ng-model='search' placeholder='Experiment Name, Person Name, Team Lead Name'/>
+        </div>
+        <div class='col-sm-2'>
+          <button ng-click='getResults()' class='btn btn-primary'>Search</button>
+        </div>
+      </div>
+  </div>
+
+  <div class="results-container">
+    <h1> Experiments </h1>
+    <h4 ng-show='allResults.length === 0'>No Experiments Found</h4>
+    <table class='table table-striped' ng-show='allResults.length > 0'>
+      <thead>
+        <tr>
+          <th>Experiment Name</th>
+          <th>Date</th>
+          <th>Team Lead</th>
+          <th>Person</th>
+          <th>Results</th>
+          <th>Cost</th>
+          <th>Extra Cost</th>
+          <th>Reason</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat='result in allResults'>
+          <td>{{result.experimentName}}</td>
+          <td>{{result.datePerformed}}</td>
+          <td>{{result.person.isTeamLead? 'NA': result.person.teamLead.firstName + ' ' + result.person.teamLead.lastName}}</td>
+          <td>{{result.person.lead.firstName}} {{result.person.lead.lastName}}</td>
+          <td>{{result.person.firstName}} {{result.person.lastName}}</td>
+          <td>{{result.results}}</td>
+          <td>{{result.cost}}</td>
+          <td>{{result.extraCost}}</td>
+          <td>{{result.reason}}</td>
+        </tr>
+      </tbody>
+
+    </table>
   </div>
 </div>
