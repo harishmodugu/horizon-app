@@ -1,4 +1,5 @@
-var horizonApp = angular.module('horizonApp',['ngRoute','hzRepo']);
+var horizonApp = angular.module('horizonApp',
+    ['ngRoute','personsRepoModule', 'expRepoModule']);
 
 horizonApp.config(function($routeProvider) {
   $routeProvider
@@ -6,10 +7,6 @@ horizonApp.config(function($routeProvider) {
       templateUrl: require("./views/home.htm")
       ,controller: "HomeController"
     })
-    //.when("/persons", {
-      //templateUrl: require("./views/persons.htm")
-      //,controller: "PersonController"
-    //})
     .when("/teams", {
       templateUrl: require("./views/teams.htm")
       ,controller: "TeamsController"

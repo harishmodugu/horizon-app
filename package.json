@@ -17,6 +17,7 @@
     "bootstrap-sass": "^3.3.7",
     "copy-webpack-plugin": "^4.0.0",
     "css-loader": "^0.25.0",
+    "lodash": "^4.17.0",
     "node-sass": "^3.10.1",
     "resolve-url-loader": "^1.6.0",
     "sass-loader": "^4.0.2",

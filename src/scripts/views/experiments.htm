@@ -1,0 +1,91 @@
+<div class="experiments-container" ng-controller='ExperimentsController' ng-init='hzConnect()'>
+  <h1> Add an experiment </h1>
+
+  <div class="add-experiment">
+    <form class="form-horizontal">
+      <div class='form-group'>
+        <label for='experimentName' class='col-sm-2 control-label'>Name</label>
+        <div class='col-sm-3'>
+          <input type='text' class='form-control' id='experimentName' ng-model='experimentName' placeholder='Experiment Name'/>
+        </div>
+      </div>
+      <div class='form-group'>
+        <label for='datePerformed' class='col-sm-2 control-label'>Date Performed </label>
+        <div class='col-sm-3'>
+          <input type='text' class='form-control' id='datePerformed' ng-model='datePerformed' placeholder='mm/dd/yyyy'/>
+        </div>
+      </div>
+      <div class='form-group' ng-hide='isTeamLead===true'>
+        <label for='person' class='col-sm-2 control-label'>Performed By</label>
+        <div class='col-sm-3'>
+            <select type='text' id='personId' ng-model='personId'>
+              <option value=''>---Select---</option>
+              <option ng-repeat='option in allPersons' value='{{option.id}}'>{{option.firstName}} {{option.lastName}}</option>
+            </select>
+        </div>
+      </div>
+      <div class='form-group'>
+        <label for='results' class='col-sm-2 control-label'>Results</label>
+        <div class='col-sm-3'>
+          <input type='text' class='form-control' id='results' ng-model='results'/>
+        </div>
+      </div>
+      <div class='form-group'>
+        <label for='cost' class='col-sm-2 control-label'>Cost</label>
+        <div class='col-sm-3'>
+            <input type='text' id='cost' ng-model='cost' placeholder='0.00'/>
+        </div>
+      </div>
+      <div class='form-group'>
+        <label for='extraCost' class='col-sm-2 control-label'>Extra Cost</label>
+        <div class='col-sm-3'>
+            <input type='text' id='extraCost' ng-model='extraCost' placeholder='0.00'/>
+        </div>
+      </div>
+      <div class='form-group'>
+        <label for='reason' class='col-sm-2 control-label'>Reason </label>
+        <div class='col-sm-3'>
+            <input type='text' id='reason' ng-model='reason' />
+        </div>
+      </div>
+      <div class='form-group'>
+        <div class='col-sm-3 col-sm-offset-2'>
+          <button class='btn btn-primary' ng-click='addExperiment()'>Add Experiment</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="experiments-container">
+    <h1> Experiments </h1>
+    <h4 ng-show='allExperiments.length === 0'>None Added</h4>
+    <table class='table table-striped' ng-show='allExperiments.length > 0'>
+      <thead>
+        <tr>
+          <th>Experiment Name</th>
+          <th>Date</th>
+          <th>Person</th>
+          <th>Results</th>
+          <th>Cost</th>
+          <th>Extra Cost</th>
+          <th>Reason</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat='experiment in allExperiments'>
+          <td>{{experiment.experimentName}}</td>
+          <td>{{experiment.datePerformed}}</td>
+          <td>{{experiment.person.firstName}} {{experiment.person.lastName}}</td>
+          <td>{{experiment.results}}</td>
+          <td>{{experiment.cost}}</td>
+          <td>{{experiment.extraCost}}</td>
+          <td>{{experiment.reason}}</td>
+          <td><button class='btn btn-link' ng-click='deleteExperiment(experiment.id, $index)'>Delete</button></td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+
+</div>

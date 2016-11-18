@@ -1,7 +1,7 @@
-var repoModule = angular.module('hzRepo', []);
+var repoModule = angular.module('personsRepoModule', []);
 var horizon = require('../hz-service');
 
-repoModule.service('$repo', function() {
+repoModule.service('$personsRepo', function($rootScope) {
   var persons = horizon("persons");
 
   return {
@@ -11,19 +11,20 @@ repoModule.service('$repo', function() {
         console.log(err);
       });
     },
-    searchItems: function(filter) {
-      console.log('searching');
+    searchPersons: function(filter) {
+      console.log('searching persons');
     },
     addPerson: function(person) {
       if(!person) return;
       persons.store(person);
+      $rootScope.$emit('PERSON_ADDED');
     },
     deletePerson: function(id) {
-      //console.log('deleting id', id);
       persons.remove(id);
+      $rootScope.$emit('PERSON_DELETED', {id: id});
     },
-    editItem: function() {
-      console.log('editing');
+    editPerson: function() {
+      console.log('editing person');
     },
     connect: function(callback) {
       horizon.onReady(callback);

@@ -1,7 +1,9 @@
 var angular = require('angular');
+var _ = require("lodash");
 require('angular-route');
 require('./hz-service');
 require('./services/persons-repo');
+require('./services/experiments-repo');
 require('./app');
 require('./controllers/home-controller');
 require('./controllers/experiments-controller');
