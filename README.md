@@ -3,6 +3,7 @@ A sample horizon rethinkdb app with angular 1.x
 
 #Setup
 * Install NodeJs
+* Install horizon -> npm install -g horizon
 * Install RethinkDb
 * Run `npm install`
 * Horizon needs a token secret to start the server. To generate a token:
